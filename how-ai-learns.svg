@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 300" role="img" aria-labelledby="t d">
+  <title id="t">How a machine-learning system works</title>
+  <desc id="d">Five steps in a loop: 1 data such as text, images and numbers; 2 training, where the system adjusts itself to find patterns; 3 a model that stores those patterns; 4 an output, which is a prediction or generated content; 5 a human check. Feedback from the human check goes back into the data.</desc>
+  <style>
+    .box{fill:#fffdf8;stroke:#1b1b1f;stroke-width:2}
+    .hl{fill:#ffe1cc;stroke:#1b1b1f;stroke-width:2}
+    .n{font:700 15px Georgia,serif;fill:#d9480f}
+    .h{font:700 19px Georgia,serif;fill:#1b1b1f}
+    .s{font:14px system-ui,sans-serif;fill:#3d3d45}
+    .a{stroke:#1b1b1f;stroke-width:2;fill:none;marker-end:url(#arr)}
+    .loop{stroke:#d9480f;stroke-width:2;fill:none;stroke-dasharray:6 5;marker-end:url(#arr2)}
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1b1b1f"/></marker>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d9480f"/></marker>
+  </defs>
+
+  <rect class="box" x="10" y="60" width="150" height="120" rx="10"/>
+  <text class="n" x="26" y="88">1</text><text class="h" x="26" y="114">Data</text>
+  <text class="s" x="26" y="140">text, images,</text><text class="s" x="26" y="158">numbers</text>
+
+  <rect class="box" x="190" y="60" width="150" height="120" rx="10"/>
+  <text class="n" x="206" y="88">2</text><text class="h" x="206" y="114">Training</text>
+  <text class="s" x="206" y="140">adjusts itself to</text><text class="s" x="206" y="158">find patterns</text>
+
+  <rect class="box" x="370" y="60" width="150" height="120" rx="10"/>
+  <text class="n" x="386" y="88">3</text><text class="h" x="386" y="114">Model</text>
+  <text class="s" x="386" y="140">stores the</text><text class="s" x="386" y="158">patterns</text>
+
+  <rect class="box" x="550" y="60" width="150" height="120" rx="10"/>
+  <text class="n" x="566" y="88">4</text><text class="h" x="566" y="114">Output</text>
+  <text class="s" x="566" y="140">a prediction or</text><text class="s" x="566" y="158">new content</text>
+
+  <rect class="hl" x="730" y="60" width="140" height="120" rx="10"/>
+  <text class="n" x="746" y="88">5</text><text class="h" x="746" y="114">Human</text>
+  <text class="h" x="746" y="136">check</text>
+  <text class="s" x="746" y="160">right? fair? safe?</text>
+
+  <path class="a" d="M160 120H188"/><path class="a" d="M340 120H368"/>
+  <path class="a" d="M520 120H548"/><path class="a" d="M700 120H728"/>
+
+  <path class="loop" d="M800 182V250H85V184"/>
+  <text class="s" x="330" y="275" fill="#d9480f">feedback and corrections improve the next version</text>
+
+  <text class="s" x="10" y="35">The model predicts what is likely. It does not check whether that is true.</text>
+</svg>

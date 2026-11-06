@@ -1,0 +1,186 @@
+/* ---------- Base ---------- */
+:root {
+  --paper: #f6f1e7;
+  --card: #fffdf8;
+  --ink: #1b1b1f;
+  --muted: #4a4a52;
+  --rule: #d8d0c0;
+  --accent: #b83a07;      /* signal orange, 5.6:1 on paper */
+  --fact: #1d4e89;        /* blue */
+  --take: #7a4b00;        /* amber-brown */
+  --guess: #5b2a86;       /* purple */
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --max: 46rem;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 1.0625rem/1.65 var(--sans);
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--accent); text-underline-offset: 0.15em; }
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+.skip {
+  position: absolute; left: -999px; top: 0;
+  background: var(--ink); color: #fff; padding: 0.6rem 1rem; z-index: 10;
+}
+.skip:focus { left: 0.5rem; top: 0.5rem; }
+
+/* ---------- Navigation ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 5;
+  background: var(--ink);
+}
+.site-header nav {
+  display: flex; gap: 0.25rem;
+  max-width: var(--max); margin: 0 auto; padding: 0 1rem;
+  overflow-x: auto; white-space: nowrap;   /* scrolls sideways on phones */
+  scrollbar-width: none;
+}
+.site-header a {
+  color: #f6f1e7; text-decoration: none;
+  font-size: 0.9rem; padding: 0.8rem 0.6rem;
+}
+.site-header a:hover { color: #ffb38a; }
+
+/* ---------- Layout ---------- */
+main { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem 3rem; }
+section { padding: 2.5rem 0; border-top: 1px solid var(--rule); }
+section.hero { border-top: 0; padding-top: 3rem; }
+
+h1, h2, h3 { font-family: var(--serif); line-height: 1.15; }
+h1 { font-size: clamp(2.6rem, 9vw, 4.4rem); margin: 0.2em 0 0.3em; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.6rem, 5vw, 2.1rem); margin: 0 0 1rem; }
+h3 { font-size: 1.2rem; margin: 0 0 0.5rem; }
+
+.num { color: var(--accent); font-size: 0.6em; vertical-align: 0.35em; margin-right: 0.3em; }
+.kicker { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0; }
+.lede { font-family: var(--serif); font-size: 1.3rem; max-width: 36rem; }
+
+/* ---------- Claim labels ---------- */
+.tag {
+  display: inline-block;
+  font: 700 0.7rem/1 var(--sans);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 0.3em 0.5em; border-radius: 3px;
+  color: #fff; margin-right: 0.35em; vertical-align: 0.12em;
+}
+.tag.fact  { background: var(--fact); }
+.tag.take  { background: var(--take); }
+.tag.guess { background: var(--guess); }
+
+.claim { transition: opacity 0.25s ease; }
+.claim.is-dim { opacity: 0.25; }
+
+/* ---------- Filter buttons ---------- */
+.legend {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+  background: var(--card); border: 1px solid var(--rule); border-radius: 8px;
+  padding: 1rem; margin-top: 1.5rem;
+}
+.legend p { flex-basis: 100%; margin: 0 0 0.25rem; font-size: 0.95rem; }
+.filter {
+  font: inherit; font-size: 0.85rem;
+  background: transparent; color: var(--ink);
+  border: 1.5px solid var(--rule); border-radius: 999px;
+  padding: 0.35rem 0.8rem; cursor: pointer;
+}
+.filter:hover { border-color: var(--ink); }
+.filter[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: #fff; }
+
+/* ---------- Figure ---------- */
+figure { margin: 1.5rem 0; background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 1rem; }
+figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 0.5rem; }
+
+/* ---------- Cards ---------- */
+.cards { display: grid; gap: 1rem; }
+.card {
+  background: var(--card); border: 1px solid var(--rule); border-radius: 8px;
+  padding: 1.1rem 1.2rem;
+}
+.card p { margin: 0; }
+
+/* ---------- Case studies (details/summary) ---------- */
+.case {
+  background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--accent);
+  border-radius: 8px; margin-bottom: 0.9rem;
+}
+.case summary {
+  cursor: pointer; padding: 1rem 1.2rem;
+  font-family: var(--serif); font-size: 1.15rem; font-weight: 700;
+  list-style: none; position: relative; padding-right: 2.5rem;
+}
+.case summary::-webkit-details-marker { display: none; }
+.case summary::after {
+  content: "+"; position: absolute; right: 1.1rem; top: 0.85rem;
+  font: 400 1.5rem/1 var(--sans); color: var(--accent);
+}
+.case[open] summary::after { content: "−"; }
+.case > p { margin: 0 1.2rem 1rem; }
+.case-label {
+  display: block; font: 700 0.72rem/1.4 var(--sans);
+  text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent);
+}
+
+.callout {
+  border-left: 3px solid var(--take);
+  padding: 0.6rem 0.9rem; background: #fbf3e2; border-radius: 0 6px 6px 0;
+}
+section > .callout { margin-top: 1.5rem; }
+
+/* ---------- Stat block ---------- */
+.stat {
+  background: var(--ink); color: #f6f1e7; border-radius: 8px;
+  padding: 1.4rem 1.4rem 1.1rem; margin-bottom: 1.5rem;
+}
+.stat .big { font: 700 clamp(2.2rem, 8vw, 3.2rem)/1 var(--serif); margin: 0 0 0.6rem; color: #ffb38a; }
+.stat p { margin: 0; }
+.stat a { color: #ffb38a; }
+abbr { text-decoration: none; }
+
+/* ---------- Process + sources ---------- */
+.process p { max-width: 40rem; }
+.ack {
+  font-size: 0.95rem; background: var(--card);
+  border: 1px dashed var(--muted); border-radius: 8px; padding: 0.9rem 1rem;
+}
+.sources ol { padding-left: 1.4rem; font-size: 0.92rem; }
+.sources li { margin-bottom: 0.35rem; }
+
+code { font-size: 0.9em; background: #ece5d6; padding: 0.1em 0.3em; border-radius: 3px; }
+
+footer {
+  border-top: 1px solid var(--rule); text-align: center;
+  font-size: 0.85rem; color: var(--muted); padding: 1.5rem 1rem 2.5rem;
+}
+
+/* ---------- Wider screens ---------- */
+@media (min-width: 700px) {
+  .cards { grid-template-columns: repeat(3, 1fr); }
+  .site-header nav { justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .claim { transition: none; }
+}
+
+/* Diagram: keep it readable on phones by letting it scroll sideways */
+.diagram-scroll { overflow-x: auto; }
+@media (max-width: 699px) {
+  .diagram-scroll img { min-width: 640px; }
+}
